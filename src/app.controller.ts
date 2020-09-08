@@ -12,8 +12,9 @@ export class AppController {
     return res.status(200).json(result);
   }
 
-  @Post('/validator')
+  @Post('check/data')
   handelForm(@Body() body: any, @Res() res: Response) {
     const result = this.appService.handelForm(body);
+    return res.status(200).json(result);
   }
 }
