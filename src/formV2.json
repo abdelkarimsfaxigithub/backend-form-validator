@@ -1,0 +1,23 @@
+{
+  "formname": "formulaire de test",
+  "fieldsui": [
+    {
+      "name": "textfield1",
+      "value": "test1"
+    },
+    {
+      "name": "numberfield1",
+      "value": 99
+    },
+    {
+      "name": "datefield1",
+      "value": "20-09-2020"
+    },
+    {
+      "xtype": "button",
+      "name": "textfield1",
+      "text": "Validate"
+    }
+  ],
+  "redirection": "https://www.wehoop.com/en/"
+}

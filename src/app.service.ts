@@ -1,17 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import * as form from './form.json';
+import * as formV1 from './formV1.json';
+import * as formV2 from './formV2.json';
 import * as moment from 'moment';
 
 @Injectable()
 export class AppService {
-  getForm() {
-    return form;
+  getFormV1() {
+    return formV1;
+  }
+
+  getFormV2() {
+    return formV2;
   }
 
   handelForm(data) {
     const error = [];
     if (data && Object.keys(data).length) {
-      form.fieldsui.forEach(el => {
+      formV1.fieldsui.forEach(el => {
         if (el.xtype !== 'button' && el.mandatory) {
           if (!data[el.name]) {
             error.push(`${el.label} is required`);
@@ -28,7 +33,7 @@ export class AppService {
               error.push(`field length of ${el.label} must be greater than 3.`);
             } else if (el.xtype === 'date' && data[el.name]) {
               const date = moment(data[el.name]);
-              if (!date.isValid) error.push(`Date format is not valid.`);
+              if (!date.isValid) error.push(`Date V1at is not valid.`);
             }
           }
         }
@@ -38,6 +43,6 @@ export class AppService {
     }
     return error.length
       ? { isValid: false, error }
-      : { isValid: true, redirectionUrl: form.redirection };
+      : { isValid: true, redirectionUrl: formV1.redirection };
   }
 }

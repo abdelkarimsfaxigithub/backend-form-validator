@@ -6,9 +6,15 @@ import { Response } from 'express';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('get/form')
-  getForm(@Res() res: Response) {
-    const result = this.appService.getForm();
+  @Get('v1/get/form')
+  getFormV1(@Res() res: Response) {
+    const result = this.appService.getFormV1();
+    return res.status(200).json(result);
+  }
+
+  @Get('v2/get/form')
+  getFormV2(@Res() res: Response) {
+    const result = this.appService.getFormV2();
     return res.status(200).json(result);
   }
 
